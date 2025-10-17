@@ -3,8 +3,8 @@ import gsap from "gsap";
 
 import AnimatedCounter from "../components/AnimatedCounter";
 import Button from "../components/Button";
+import LightRays from "../components/LightRays";
 import { words } from "../constants";
-import HeroExperience from "../components/models/hero_models/HeroExperience";
 
 const Hero = () => {
   useGSAP(() => {
@@ -17,17 +17,51 @@ const Hero = () => {
 
   return (
     <section id="hero" className="relative overflow-hidden">
-      <div className="absolute top-0 left-0 z-10">
-        <img src="/images/bg.png" alt="" />
+      {/* Light rays background layer */}
+      <div className="absolute inset-0 z-5 pointer-events-none">
+        <LightRays
+  raysOrigin="top-left"
+  raysColor="#00ffff"
+  raysSpeed={1.5}
+  lightSpread={0.6}
+  rayLength={2.0}
+  fadeDistance={1.8}
+  saturation={1.2}
+  followMouse={true}
+  mouseInfluence={0.1}
+  noiseAmount={0.05}
+  distortion={0.05}
+  className="mix-blend-screen opacity-90"
+/>
+
+      </div>
+      <div className="absolute inset-0 z-5 pointer-events-none">
+        <LightRays
+  raysOrigin="top-right"
+  raysColor="#0000ff"
+  raysSpeed={1.5}
+  lightSpread={0.6}
+  rayLength={2.0}
+  fadeDistance={1.8}
+  saturation={1.2}
+  followMouse={true}
+  mouseInfluence={0.1}
+  noiseAmount={0.05}
+  distortion={0.05}
+  className="mix-blend-screen opacity-90"
+/>
+
       </div>
 
-      <div className="hero-layout">
-        {/* LEFT: Hero Content */}
-        <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
-          <div className="flex flex-col gap-7">
+      {/* Decorative background image, kept below content but above rays if needed */}
+      
+      <div className="hero-layout relative z-10">
+        {/* CENTER: Hero Content */}
+        <header className="flex flex-col justify-center items-center text-center w-full md:px-24 px-5">
+          <div className="flex flex-col gap-6">
             <div className="hero-text">
-              <h1>
-                Shaping
+              <h1 className="ml-5 text-left">
+                Transforming
                 <span className="slide">
                   <span className="wrapper">
                     {words.map((word, index) => (
@@ -38,7 +72,7 @@ const Hero = () => {
                         <img
                           src={word.imgPath}
                           alt="person"
-                          className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50"
+                          className="xl:size-9 md:size-8 size-7 md:p-2 p-1 rounded-full bg-white-50"
                         />
                         <span>{word.text}</span>
                       </span>
@@ -47,28 +81,20 @@ const Hero = () => {
                 </span>
               </h1>
               <h1>into Real Projects</h1>
-              <h1>that Deliver Results</h1>
+              <h1>that Deliver Experiences</h1>
             </div>
 
             <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              Hi, I’m Adrian, a developer based in Croatia with a passion for
-              code.
+              I&apos;m Vansh, a full-stack developer turning creative visions into scalable products.
             </p>
 
             <Button
               text="See My Work"
-              className="md:w-80 md:h-16 w-60 h-12"
+              className="md:w-80 md:h-16 w-60 h-12 mx-auto"
               id="counter"
             />
           </div>
         </header>
-
-        {/* RIGHT: 3D Model or Visual */}
-        <figure>
-          <div className="hero-3d-layout">
-            <HeroExperience />
-          </div>
-        </figure>
       </div>
 
       <AnimatedCounter />

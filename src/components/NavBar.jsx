@@ -25,8 +25,10 @@ const NavBar = () => {
   return (
     <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
       <div className="inner">
-        <a href="#hero" className="logo">
-          Adrian JSM
+        <a href="#hero" className="logo flex items-center gap-2">
+          
+          <span>Vansh Ahuja</span>
+          <img src="/images/logos/imagee.png" alt="Logo" height={30} width={30} />
         </a>
 
         <nav className="desktop">

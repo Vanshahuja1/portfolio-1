@@ -29,15 +29,16 @@ const words = [
 ];
 
 const counterItems = [
-  { value: 15, suffix: "+", label: "Years of Experience" },
-  { value: 200, suffix: "+", label: "Satisfied Clients" },
-  { value: 108, suffix: "+", label: "Completed Projects" },
-  { value: 90, suffix: "%", label: "Client Retention Rate" },
+  { value: 1, suffix: "+", label: "Years of Experience" },
+  { value: 12, suffix: "+", label: "Completed Projects" },
+  { value: 50, suffix: "+", label: "Satisfied Clients / Users" },
+  { value: 90, suffix: "%", label: "Project Success Rate" },
 ];
+
 
 const logoIconsList = [
   {
-    imgPath: "/images/logos/company-logo-1.png",
+    imgPath: "/images/mongo.png",
   },
   {
     imgPath: "/images/logos/company-logo-2.png",
@@ -49,7 +50,7 @@ const logoIconsList = [
     imgPath: "/images/logos/company-logo-4.png",
   },
   {
-    imgPath: "/images/logos/company-logo-5.png",
+    imgPath: "/images/mongo.png",
   },
   {
     imgPath: "/images/logos/company-logo-6.png",
@@ -74,20 +75,21 @@ const logoIconsList = [
 const abilities = [
   {
     imgPath: "/images/seo.png",
-    title: "Quality Focus",
-    desc: "Delivering high-quality results while maintaining attention to every detail.",
+    title: "Pixel-Perfect Precision",
+    desc: "Every line of code reflects care, craftsmanship, and a commitment to flawless execution.",
   },
   {
     imgPath: "/images/chat.png",
-    title: "Reliable Communication",
-    desc: "Keeping you updated at every step to ensure transparency and clarity.",
+    title: "Seamless Collaboration",
+    desc: "Bridging ideas and execution through honest communication and a shared vision for success.",
   },
   {
     imgPath: "/images/time.png",
-    title: "On-Time Delivery",
-    desc: "Making sure projects are completed on schedule, with quality & attention to detail.",
+    title: "Punctual. Professional. Proven.",
+    desc: "Delivering high-quality products right when you need them — every single time.",
   },
 ];
+
 
 const techStackImgs = [
   {
@@ -147,42 +149,45 @@ const techStackIcons = [
 
 const expCards = [
   {
-    review: "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
-    imgPath: "/images/exp1.png",
-    logoPath: "/images/logo1.png",
+    imgPath: "/images/logos/one_aim.png",
+    logoPath: "/images/logos/one_aim.png",
     title: "Frontend Developer",
-    date: "January 2023 - Present",
+    company: "One Aim IT Solutions",
+    date: "March 2025 - Present",
     responsibilities: [
-      "Developed and maintained user-facing features for the Hostinger website.",
-      "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
-      "Optimized web applications for maximum speed and scalability.",
+      "Developing and maintaining responsive and scalable web interfaces using React.js.",
+      "Collaborating with backend developers and UI/UX designers to ensure seamless user experiences.",
+      "Optimizing web performance and ensuring cross-browser compatibility.",
+      "Implementing reusable components and following modern frontend best practices.",
     ],
   },
   {
-    review: "Adrian’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
-    imgPath: "/images/exp2.png",
-    logoPath: "/images/logo2.png",
-    title: "Full Stack Developer",
-    date: "June 2020 - December 2023",
+    imgPath: "/images/logos/one_aim.png",
+    logoPath: "/images/logos/digital.png",
+    title: "Software Developer Intern",
+    company: "Digital2Days",
+    date: "June 2024 - January 2025",
     responsibilities: [
-      "Led the development of Docker's web applications, focusing on scalability.",
-      "Worked with backend engineers to integrate APIs seamlessly with the frontend.",
-      "Contributed to open-source projects that were used with the Docker ecosystem.",
+      "Assisted in developing and testing full-stack web applications using React.js and Node.js.",
+      "Contributed to frontend feature enhancements and bug fixing.",
+      "Collaborated with senior developers to integrate RESTful APIs.",
+      "Gained hands-on experience in real-world software development workflows.",
     ],
   },
   {
-    review: "Adrian’s work on Appwrite’s mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
-    imgPath: "/images/exp3.png",
-    logoPath: "/images/logo3.png",
-    title: "React Native Developer",
-    date: "March 2019 - May 2020",
+    imgPath: "/images/logos/one_aim.png",
+    logoPath: "/images/logos/gehu.png",
+    title: "Bachelor of Technology (B.Tech) in Computer Science and Engineering",
+    company: "Graphic Era Hill University, Dehradun",
+    date: "2021 - 2025",
     responsibilities: [
-      "Built cross-platform mobile apps using React Native, integrating with Appwrite's backend services.",
-      "Improved app performance and user experience through code optimization and testing.",
-      "Coordinated with the product team to implement features based on feedback.",
+      "Completed core courses in Computer Science, including Data Structures, Algorithms, Machine Learning, and Web Development.",
+      "Worked on multiple academic and personal projects showcasing practical implementation of learned skills.",
+      "Actively participated in technical events and hackathons to enhance development and problem-solving skills.",
     ],
   },
 ];
+
 
 const expLogos = [
   {
