@@ -1,6 +1,5 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-
 import AnimatedCounter from "../components/AnimatedCounter";
 import Button from "../components/Button";
 import LightRays from "../components/LightRays";
@@ -20,36 +19,36 @@ const Hero = () => {
       {/* Light rays background layer */}
       <div className="absolute inset-0 z-5 pointer-events-none">
         <LightRays
-  raysOrigin="top-left"
-  raysColor="#00ffff"
-  raysSpeed={1.5}
-  lightSpread={0.6}
-  rayLength={2.0}
-  fadeDistance={1.8}
-  saturation={1.2}
-  followMouse={true}
-  mouseInfluence={0.1}
-  noiseAmount={0.05}
-  distortion={0.05}
-  className="mix-blend-screen opacity-90"
-/>
+          raysOrigin="top-left"
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={0.6}
+          rayLength={2.0}
+          fadeDistance={1.8}
+          saturation={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.05}
+          distortion={0.05}
+          className="mix-blend-screen opacity-90"
+        />
 
       </div>
       <div className="absolute inset-0 z-5 pointer-events-none">
         <LightRays
-  raysOrigin="top-right"
-  raysColor="#0000ff"
-  raysSpeed={1.5}
-  lightSpread={0.6}
-  rayLength={2.0}
-  fadeDistance={1.8}
-  saturation={1.2}
-  followMouse={true}
-  mouseInfluence={0.1}
-  noiseAmount={0.05}
-  distortion={0.05}
-  className="mix-blend-screen opacity-90"
-/>
+        raysOrigin="top-right"
+        raysColor="#0000ff"
+        raysSpeed={1.5}
+        lightSpread={0.6}
+        rayLength={2.0}
+        fadeDistance={1.8}
+        saturation={1.2}
+        followMouse={true}
+        mouseInfluence={0.1}
+        noiseAmount={0.05}
+        distortion={0.05}
+        className="mix-blend-screen opacity-90"
+      />
 
       </div>
 

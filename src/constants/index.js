@@ -160,6 +160,8 @@ const expCards = [
       "Optimizing web performance and ensuring cross-browser compatibility.",
       "Implementing reusable components and following modern frontend best practices.",
     ],
+    review:
+      "Vansh is a dedicated and talented frontend developer who consistently delivers high-quality, efficient, and well-structured code. His proactive approach and attention to detail greatly enhance our project outcomes.",
   },
   {
     imgPath: "/images/logos/one_aim.png",
@@ -173,6 +175,8 @@ const expCards = [
       "Collaborated with senior developers to integrate RESTful APIs.",
       "Gained hands-on experience in real-world software development workflows.",
     ],
+    review:
+      "During his internship, Vansh showed impressive growth and adaptability. He quickly learned new technologies and made valuable contributions to both frontend and backend development tasks.",
   },
   {
     imgPath: "/images/logos/one_aim.png",
@@ -185,8 +189,11 @@ const expCards = [
       "Worked on multiple academic and personal projects showcasing practical implementation of learned skills.",
       "Actively participated in technical events and hackathons to enhance development and problem-solving skills.",
     ],
+    review:
+      "Vansh has demonstrated excellent academic performance and practical technical skills throughout his studies. His consistent effort, teamwork, and innovative thinking have been commendable.",
   },
 ];
+
 
 
 const expLogos = [
