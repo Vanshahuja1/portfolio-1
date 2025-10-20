@@ -11,19 +11,18 @@ const Testimonials = () => {
           sub="⭐️ Customer feedback highlights"
         />
 
-        <div className="lg:columns-3 md:columns-2 columns-1 mt-16">
+        <div className="lg:columns-4 md:columns-3 columns-1 mt-16">
           {testimonials.map((testimonial, index) => (
-            <GlowCard card={testimonial} key={index} index={index}>
-              <div className="flex items-center gap-3">
-                <div>
-                  <img src={testimonial.imgPath} alt="" />
+            <div key={index} className={index >= 3 ? "hidden md:block" : "block"}>
+              <GlowCard card={testimonial} index={index}>
+                <div className="flex items-center">
+                  <div>
+                    <p className="font-bold">{testimonial.name}</p>
+                    <p className="text-white-50">{testimonial.mentions}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-bold">{testimonial.name}</p>
-                  <p className="text-white-50">{testimonial.mentions}</p>
-                </div>
-              </div>
-            </GlowCard>
+              </GlowCard>
+            </div>
           ))}
         </div>
       </div>

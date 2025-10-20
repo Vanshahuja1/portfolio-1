@@ -5,6 +5,8 @@ import { navLinks } from "../constants";
 const NavBar = () => {
   // track if the user has scrolled down the page
   const [scrolled, setScrolled] = useState(false);
+  // control initial visibility after hero animation completes
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     // create an event listener for when the user scrolls
@@ -17,13 +19,28 @@ const NavBar = () => {
 
     // add the event listener to the window
     window.addEventListener("scroll", handleScroll);
+    // initialize once on mount
+    handleScroll();
+
+    // wait for hero animation to complete, with fallback
+    const onHeroDone = () => setVisible(true);
+    window.addEventListener("heroAnimationComplete", onHeroDone, { once: true });
+    const fallback = setTimeout(() => setVisible(true), 3000);
 
     // cleanup the event listener when the component is unmounted
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("heroAnimationComplete", onHeroDone);
+      clearTimeout(fallback);
+    };
   }, []);
 
   return (
-    <header className={`navbar ${scrolled ? "scrolled" : "not-scrolled"}`}>
+    <header
+      className={`navbar ${scrolled ? "scrolled" : "not-scrolled"} ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3 pointer-events-none"
+      } transition-all duration-500`}
+    >
       <div className="inner">
         <a href="#hero" className="logo flex items-center gap-2">
           

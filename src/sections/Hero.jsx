@@ -10,7 +10,16 @@ const Hero = () => {
     gsap.fromTo(
       ".hero-text h1",
       { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.inOut" }
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.2,
+        duration: 1,
+        ease: "power2.inOut",
+        onComplete: () => {
+          window.dispatchEvent(new CustomEvent("heroAnimationComplete"));
+        },
+      }
     );
   });
 
@@ -32,24 +41,22 @@ const Hero = () => {
           distortion={0.05}
           className="mix-blend-screen opacity-90"
         />
-
       </div>
       <div className="absolute inset-0 z-5 pointer-events-none">
         <LightRays
-        raysOrigin="top-right"
-        raysColor="#0000ff"
-        raysSpeed={1.5}
-        lightSpread={0.6}
-        rayLength={2.0}
-        fadeDistance={1.8}
-        saturation={1.2}
-        followMouse={true}
-        mouseInfluence={0.1}
-        noiseAmount={0.05}
-        distortion={0.05}
-        className="mix-blend-screen opacity-90"
-      />
-
+          raysOrigin="top-right"
+          raysColor="#0000ff"
+          raysSpeed={1.5}
+          lightSpread={0.6}
+          rayLength={2.0}
+          fadeDistance={1.8}
+          saturation={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.05}
+          distortion={0.05}
+          className="mix-blend-screen opacity-90"
+        />
       </div>
 
       {/* Decorative background image, kept below content but above rays if needed */}
@@ -59,7 +66,7 @@ const Hero = () => {
         <header className="flex flex-col justify-center items-center text-center w-full md:px-24 px-5">
           <div className="flex flex-col gap-6">
             <div className="hero-text">
-              <h1 className="ml-5 text-left">
+              <h1 className="ml-5 lg:text-left md:text-left text-center">
                 Transforming
                 <span className="slide">
                   <span className="wrapper">

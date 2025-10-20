@@ -116,16 +116,16 @@ section {
   }
 
   .hero-layout {
-    @apply relative z-10 xl:mt-20 mt-32 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center;
+    @apply relative z-10 xl:mt-20 mt-16 md:mt-32 md:h-dvh h-[75vh] flex items-center justify-center;
   }
 
   .hero-text {
-    @apply flex flex-col justify-center md:text-[50px] text-[30px] font-semibold relative z-10 pointer-events-none;
+    @apply flex flex-col justify-center md:text-[50px] text-[36px] font-semibold relative z-10 pointer-events-none leading-[1.15];
     img {
-      @apply size-8 md:size-10 object-contain;
+      @apply size-9 md:size-10 object-contain;
     }
     .slide {
-      @apply absolute pt-0 px-2 md:px-5 py-[30px] h-[48px] md:h-[78px] md:translate-y-1 translate-y-0 overflow-hidden;
+      @apply relative pt-0 px-2 md:px-5 py-0 h-[56px] md:h-[78px] translate-y-0 overflow-hidden block;
     }
   }
 
@@ -200,10 +200,10 @@ section {
       @apply h-full flex flex-col justify-between xl:w-[60%];
 
       .image-wrapper {
-        @apply xl:h-[70vh] md:h-[50vh] h-96 relative;
+        @apply xl:h-[70vh] md:h-[50vh] h-72 relative rounded-2xl overflow-hidden;
 
         img {
-          @apply w-full h-full object-cover rounded-xl absolute inset-0;
+          @apply w-full h-full rounded-xl absolute inset-0 object-contain md:object-cover;
         }
       }
 
@@ -348,6 +348,19 @@ section {
 
       .icon {
         @apply border border-black-50 bg-black-100 flex justify-center items-center rounded-xl size-10 md:size-12 cursor-pointer transition-all duration-500 hover:bg-black-50;
+        position: relative;
+        overflow: hidden;
+
+
+
+        &:hover::before {
+          opacity: 0.6;
+        }
+
+        & > * {
+          position: relative;
+          z-index: 1;
+        }
       }
 
       img {
@@ -368,6 +381,8 @@ section {
   display: flex;
   flex-direction: column;
   animation: wordSlider 21s infinite cubic-bezier(0.9, 0.01, 0.3, 0.99);
+  animation-delay: 0.6s;
+  will-change: transform;
 }
 
 @keyframes wordSlider {
@@ -443,9 +458,15 @@ section {
   position: absolute;
   overflow: hidden;
   animation: marquee 60s linear infinite;
+  will-change: left;
 }
 .marquee-item {
   float: left;
+}
+@media (max-width: 768px) {
+  .marquee-box {
+    animation-duration: 24s;
+  }
 }
 @keyframes marquee {
   0% {

@@ -77,18 +77,18 @@ const AppShowcase = () => {
       <div className="w-full">
         <div className="px-4 md:px-8 lg:px-12 mb-8">
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">Projects</h1>
-          <p className="text-white-50 md:text-lg mt-2">A selection of products and apps I've designed and built with a focus on reliability, performance, and user experience.</p>
+          <p className="text-white-50 md:text-lg mt-2">A selection of digital products  I've designed and built with a focus on reliability, performance, and user experience.</p>
         </div>
         <div className="showcaselayout">
           <div ref={rydeRef} className="first-project-wrapper">
             <div className="image-wrapper relative overflow-hidden group">
-              <img src="/images/heroo.png" alt="Ryde App Interface" />
+              <img src="/images/heroo.png" className="rounded-2xl" alt="Ryde App Interface" />
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                <a href="#" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm">
+                <a href="https://qruzine.com/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm">
                   <ExternalLink size={16} />
                   <span>View Project</span>
                 </a>
-                <a href="#" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm">
+                <a href="https://github.com/qruzine01-gif/v1" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm">
                   <Github size={16} />
                   <span>View Code</span>
                 </a>
@@ -129,11 +129,11 @@ const AppShowcase = () => {
                   alt="Library Management Platform"
                 />
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                  <a href="#" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm">
+                  <a href="https://shrm-temp-wf5b.vercel.app/landing" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm">
                     <ExternalLink size={16} />
                     <span>View Project</span>
                   </a>
-                  <a href="#" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm">
+                  <a href="https://github.com/Vanshahuja1/shrm.git" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm">
                     <Github size={16} />
                     <span>View Code</span>
                   </a>
@@ -160,11 +160,11 @@ const AppShowcase = () => {
               <div className="image-wrapper bg-[#E8F5E9] relative overflow-hidden group">
                 <img src="/images/ai.png" alt="AI Medical Documentation System" />
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                  <a href="#" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm">
+                  <a href="https://saramedico.com/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm">
                     <ExternalLink size={16} />
                     <span>View Project</span>
                   </a>
-                  <a href="#" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm">
+                  <a href="https://github.com/ShikharPandey123/ai-medical.git" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm">
                     <Github size={16} />
                     <span>View Code</span>
                   </a>

@@ -213,46 +213,61 @@ const expLogos = [
 
 const testimonials = [
   {
-    name: "Esther Howard",
-    mentions: "@estherhoward",
+    name: "Shikhar Pandey",
+    mentions: "Colleague",
     review:
-      "I can’t say enough good things about Adrian. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
+      "Working together on multiple features, I appreciated his clear communication and reliable delivery.",
     imgPath: "/images/client1.png",
   },
   {
-    name: "Wade Warren",
-    mentions: "@wadewarren",
+    name: "Pooja Devrari",
+    mentions: "Colleague",
     review:
-      "Working with Adrian was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.",
-    imgPath: "/images/client3.png",
-  },
-  {
-    name: "Guy Hawkins",
-    mentions: "@guyhawkins",
-    review:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+      "A supportive teammate with great attention to detail. Collaboration was smooth and productive.",
     imgPath: "/images/client2.png",
   },
   {
-    name: "Marvin McKinney",
-    mentions: "@marvinmckinney",
+    name: "Gargi Mishra",
+    mentions: "Manager",
     review:
-      "Adrian was a pleasure to work with. He turned our outdated website into a fresh, intuitive platform that’s both modern and easy to navigate. Fantastic work overall.",
+      "Demonstrated ownership and consistency across deliverables. A pleasure to manage and mentor.",
     imgPath: "/images/client5.png",
   },
   {
-    name: "Floyd Miles",
-    mentions: "@floydmiles",
+    name: "Sumit Nagarkoti",
+    mentions: "Colleague",
     review:
-      "Adrian’s expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He’s a true professional!",
+      "Great problem-solving mindset and a dependable partner in shipping features on time.",
     imgPath: "/images/client4.png",
   },
+  
   {
-    name: "Albert Flores",
-    mentions: "@albertflores",
+    name: "Ashutosh Kumar Singh",
+    mentions: "Client",
     review:
-      "Adrian was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend and backend dev are top-notch.",
-    imgPath: "/images/client6.png",
+      "Delivered exactly what we needed with a strong focus on quality and timelines.",
+    imgPath: "/images/client1.png",
+  },
+  {
+    name: "Manish",
+    mentions: "Client",
+    review:
+      "Professional, responsive, and results-driven. The final product exceeded expectations.",
+    imgPath: "/images/client2.png",
+  },
+  {
+    name: "Chander Sansariya",
+    mentions: "Employer",
+    review:
+      "Showed initiative and delivered value across multiple projects with minimal supervision.",
+    imgPath: "/images/client3.png",
+  },
+  {
+    name: "Narendra Raj Singh",
+    mentions: "Employer",
+    review:
+      "Reliable, detail-oriented, and a strong team player. Consistently met expectations.",
+    imgPath: "/images/client4.png",
   },
 ];
 
