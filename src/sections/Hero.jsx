@@ -66,7 +66,7 @@ const Hero = () => {
         <header className="flex flex-col justify-center items-center text-center w-full md:px-24 px-5">
           <div className="flex flex-col gap-6">
             <div className="hero-text">
-              <h1 className="ml-5 lg:text-left md:text-left text-center">
+              <h1 className="ml-5 lg:text-left md:text-center text-center">
                 Transforming
                 <span className="slide">
                   <span className="wrapper">

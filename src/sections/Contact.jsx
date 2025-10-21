@@ -20,7 +20,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Show loading state
+    setLoading(true);
 
     try {
       await emailjs.sendForm(
@@ -29,13 +29,11 @@ const Contact = () => {
         formRef.current,
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       );
-
-      // Reset form and stop loading
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
-      console.error("EmailJS Error:", error); // Optional: show toast
+      console.error("EmailJS Error:", error);
     } finally {
-      setLoading(false); // Always stop loading, even on error
+      setLoading(false);
     }
   };
 
@@ -48,7 +46,7 @@ const Contact = () => {
         />
         <div className="grid-12-cols mt-16">
           <div className="xl:col-span-5">
-            <div className="flex-center card-border rounded-xl p-10">
+            <div className="flex-center card-border rounded-xl p-10 flex-col gap-6">
               <form
                 ref={formRef}
                 onSubmit={handleSubmit}
@@ -105,8 +103,24 @@ const Contact = () => {
                   </div>
                 </button>
               </form>
+
+              {/* Download CV Button */}
+              <a
+                href="/files/Vansh_Ahuja_CV.pdf"
+                download="Vansh_Ahuja_CV.pdf"
+                className="w-full mt-4"
+              >
+                <div className="cta-button group">
+                  <div className="bg-circle" />
+                  <p className="text">Download My CV</p>
+                  <div className="arrow-wrapper">
+                    <img src="/images/arrow-down.svg" alt="arrow" />
+                  </div>
+                </div>
+              </a>
             </div>
           </div>
+
           <div className="xl:col-span-7 min-h-96">
             <div className="bg-[#cd7c2e] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden">
               <ContactExperience />

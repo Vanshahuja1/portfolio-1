@@ -1,24 +1,27 @@
 "use client"
 import React from "react";
 import { motion } from "framer-motion";
-import { FaJs, FaReact, FaNodeJs, FaDatabase , FaHtml5} from "react-icons/fa";
-import { SiMongodb, SiTailwindcss, SiNextdotjs, SiTensorflow, SiFramer, SiDocker,SiAwsamplify } from "react-icons/si";
-
+import { FaJs, FaReact, FaNodeJs, FaDatabase , FaHtml5, FaGitAlt} from "react-icons/fa";
+import { SiMongodb, SiTailwindcss, SiNextdotjs, SiTensorflow, SiFramer, SiDocker,SiAwsamplify, SiTypescript, SiGraphql, SiPrisma, SiPostgresql } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 
 const skills = [
-  { name: "HTML5", icon: <FaHtml5 className="text-orange-600" /> },
-  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-500" /> },
-  { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
   { name: "React.js", icon: <FaReact className="text-cyan-400" /> },
-  { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
   { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
-  { name: "MongoDB", icon: <SiMongodb className="text-green-400" /> },
-  { name: "SQL", icon: <FaDatabase className="text-blue-400" /> },
-  { name: "Framer Motion", icon: <SiFramer className="text-pink-500" /> },
-  { name: "Docker", icon: <SiDocker className="text-blue-400" /> },
-  { name: "AWS", icon: <SiAwsamplify className="text-orange-400" /> },
+  { name: "TypeScript", icon: <SiTypescript className="text-blue-500" /> },
+  { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
+  { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
+  { name: "GraphQL", icon: <SiGraphql className="text-pink-600" /> },
   { name: "REST APIs", icon: <TbApi className="text-green-400" /> },
+  { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-600" /> },
+  { name: "MongoDB", icon: <SiMongodb className="text-green-400" /> },
+  { name: "Prisma ORM", icon: <SiPrisma className="text-cyan-600" /> },
+  { name: "AWS", icon: <SiAwsamplify className="text-orange-400" /> },
+  { name: "Docker", icon: <SiDocker className="text-blue-400" /> },
+  { name: "Git", icon: <FaGitAlt className="text-orange-600" /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-500" /> },
+  { name: "Framer Motion", icon: <SiFramer className="text-pink-500" /> },
+  { name: "HTML5", icon: <FaHtml5 className="text-orange-600" /> },
 ];
 
 export const Skills = () => {
@@ -27,9 +30,9 @@ export const Skills = () => {
     <div id = "Skills" className="bg-black text-white py-12">
       
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-8">My Skills</h2>
+        <h2 className="text-4xl font-bold text-center mb-8">Technical Expertise</h2>
         <p className="text-center text-lg text-gray-400 mb-12">
-          A showcase of my technical expertise and tools I work with.
+          Building scalable solutions with modern technologies that drive innovation and deliver exceptional user experiences
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-8 ">
           {skills.map((skill, index) => (
