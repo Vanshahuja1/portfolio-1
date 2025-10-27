@@ -19,16 +19,16 @@ const Zyntrix = () => {
   });
 
   return (
-    <section id="zyntrix" className="section-padding flex justify-center">
-      <div className="w-full max-w-6xl flex flex-col items-center text-center gap-6">
-        <div className="flex flex-col items-center gap-3">
+    <section id="zyntrix" className="section-padding flex justify-center px-4 sm:px-6">
+      <div className="w-full max-w-6xl flex flex-col items-center text-center gap-4 sm:gap-5 md:gap-6">
+        <div className="flex flex-col items-center gap-2 sm:gap-3">
           <span className="hero-badge">Building </span>
           <div className="pointer-events-auto">
             <FuzzyText
               baseIntensity={0.2}
               hoverIntensity={0.5}
               enableHover={true}
-              fontSize="clamp(2.5rem, 8vw, 7rem)"
+              fontSize="clamp(2rem, 10vw, 7rem)"
               fontWeight={900}
               color="#ffffff"
             >
@@ -37,9 +37,9 @@ const Zyntrix = () => {
           </div>
         </div>
 
-        <p className="text-white-50 md:text-xl leading-relaxed md:max-w-3xl">
+        <p className="text-white-50 text-sm sm:text-base md:text-xl leading-7 sm:leading-8 md:leading-relaxed max-w-[72ch] md:max-w-3xl">
           {content.split(" ").map((w, i) => (
-            <span key={i} className="z-word inline-block mr-2">
+            <span key={i} className="z-word inline-block mr-1.5 sm:mr-2">
               {w}
             </span>
           ))}
