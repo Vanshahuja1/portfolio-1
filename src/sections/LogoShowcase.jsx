@@ -13,12 +13,13 @@ import {
   Presentation
 } from "lucide-react";
 
-const LogoIcon = ({ Icon, label }) => {
+const LogoIcon = (props) => {
+  const { label } = props;
   return (
     <div className="flex-none flex-center marquee-item">
       <div className="group flex flex-col items-center gap-2">
         <div className="rounded-xl p-3 transition-all duration-300 ease-out ring-1 ring-white/10 bg-white/5 group-hover:bg-gradient-to-r group-hover:from-indigo-500/20 group-hover:via-sky-500/20 group-hover:to-emerald-500/20 group-hover:ring-indigo-400/40">
-          <Icon aria-label={label} className="text-white/80 transition-colors duration-300 group-hover:text-white" size={42} strokeWidth={1.75} />
+          <props.Icon aria-label={label} className="text-white/80 transition-colors duration-300 group-hover:text-white" size={42} strokeWidth={1.75} />
         </div>
         <span className="text-xs md:text-sm text-white/60 transition-all duration-300 bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-indigo-300 group-hover:via-sky-300 group-hover:to-emerald-300">
           {label}

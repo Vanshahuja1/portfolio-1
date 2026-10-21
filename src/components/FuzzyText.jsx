@@ -166,7 +166,7 @@ const FuzzyText = ({
     };
   }, [children, fontSize, fontWeight, fontFamily, color, enableHover, baseIntensity, hoverIntensity]);
 
-  return <canvas ref={canvasRef} />;
+  return <canvas ref={canvasRef} aria-hidden="true" />;
 };
 
 export default FuzzyText;

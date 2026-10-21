@@ -4,6 +4,10 @@ const navLinks = [
     link: "#work",
   },
   {
+    name: "Projects",
+    link: "/projects",
+  },
+  {
     name: "Experience",
     link: "#experience",
   },
@@ -36,132 +40,407 @@ const counterItems = [
 ];
 
 
-const logoIconsList = [
+/*
+ * Single source of truth for projects: feeds the home-page showcase
+ * (`homeFeaturedSlugs`, in display order), the /projects index and the
+ * /projects/:slug detail pages (`projectOrder`, in display order).
+ *
+ * `detail` is optional and so is every field in it. It powers the expandable
+ * case study on /projects and the detail page; a section only renders when its
+ * field is present, so add content here as it is confirmed:
+ *
+ *   detail: {
+ *     overview:       "string",          // what it is (when there is no clear problem)
+ *     problem:        "string",          // the challenge / goal
+ *     role:           "string",
+ *     solution:       [item, ...],       // "How It Works", shown as numbered steps
+ *     architecture:   [item, ...],
+ *     decisions:      [item, ...],
+ *     challenges:     [item, ...],
+ *     scalability:    [item, ...],
+ *     outcomes:       [item, ...],       // verified outcomes only
+ *     infrastructure: ["Node.js", ...],  // tech stack, shown as tags
+ *     metrics:        [{ value: "70%", label: "fewer LLM calls" }, ...],
+ *     media:          [{ src, alt, caption? }, ...],
+ *   }
+ *
+ * An `item` is either a plain string or { title: "Short lead-in", text: "Detail." }.
+ */
+const projectData = [
   {
-    imgPath: "/images/mongo.png",
+    slug: "qruzine",
+    detail: {
+      overview:
+        "Qruzine gives restaurants a contactless ordering flow: diners scan a QR code at the table to browse the menu, order and pay, while staff manage incoming orders from the kitchen side.",
+      solution: [
+        {
+          title: "Scan to order",
+          text: "A QR code opens the restaurant's menu on the diner's phone.",
+        },
+        {
+          title: "Real-time ordering and payment",
+          text: "Orders are placed in real time and paid for securely in the same flow.",
+        },
+        {
+          title: "Kitchen management",
+          text: "Staff manage incoming orders as they arrive.",
+        },
+        {
+          title: "Restaurant dashboard",
+          text: "Today's revenue and orders, menu items, QR codes and an order-status breakdown in one view.",
+        },
+      ],
+      infrastructure: ["Next.js", "TailwindCSS", "Node.js", "Express.js", "MongoDB", "AWS EC2"],
+    },
+    title: "QR-based Restaurant Ordering System",
+    shortTitle: "Qruzine",
+    // leading words of the title shown in Qruzine's brand gold (its maroon is
+    // too dark to read as text on this site's near-black background)
+    accent: { text: "QR-based", color: "#d4af37" },
+    category: "Full-Stack",
+    image: "/images/heroo.png",
+    description:
+      "Qruzine is a comprehensive QR-based ordering platform that transforms the dining experience. Built for enterprise-scale reliability, it enables seamless menu browsing, real-time order placement, secure payment processing, and kitchen management—all through a simple QR code scan. The system streamlines restaurant operations while delivering an intuitive, contactless experience for customers.",
+    stats: ["Used by 10+ restaurants", "Serving 500+ customers daily"],
+    tech: [
+      { name: "Next.js", color: "bg-blue-500/15 text-blue-300 border-blue-400/30" },
+      { name: "Express.js", color: "bg-purple-500/15 text-purple-300 border-purple-400/30" },
+      { name: "TailwindCSS", color: "bg-teal-500/15 text-teal-300 border-teal-400/30" },
+      { name: "Node.js", color: "bg-emerald-500/15 text-emerald-300 border-emerald-400/30" },
+      { name: "MongoDB", color: "bg-green-500/15 text-green-300 border-green-400/30" },
+      { name: "Rest APIs", color: "bg-violet-500/15 text-violet-300 border-violet-400/30" },
+      { name: "AWS EC2", color: "bg-yellow-500/15 text-yellow-300 border-yellow-400/30" },
+    ],
+    links: {
+      live: "https://qruzine.com/",
+      github: "https://github.com/qruzine01-gif/v1",
+    },
   },
   {
-    imgPath: "/images/logos/company-logo-2.png",
+    slug: "shrm",
+    detail: {
+      overview:
+        "An end-to-end HR management system covering hiring, onboarding and performance, built around streamlined workflows, accurate data and team productivity.",
+      infrastructure: ["Next.js", "TailwindCSS", "Node.js", "REST API", "MongoDB", "AWS EC2"],
+    },
+    title: "Systematic Human Resource Management System",
+    shortTitle: "SHRM",
+    accent: { text: "Systematic", color: "#818cf8" },
+    category: "Full-Stack",
+    image: "/images/projects/shrm.png",
+    description:
+      "An end-to-end HRMS focused on streamlined workflows, accurate data, and team productivity across hiring, onboarding, and performance.",
+    stats: ["Used by 2 organizations managing 200+ employees"],
+    tech: [
+      { name: "Next.js", color: "bg-sky-500/15 text-sky-300 border-sky-400/30" },
+      { name: "Node.js", color: "bg-emerald-500/15 text-emerald-300 border-emerald-400/30" },
+      { name: "MongoDB", color: "bg-indigo-500/15 text-indigo-300 border-indigo-400/30" },
+      { name: "TailwindCSS", color: "bg-teal-500/15 text-teal-300 border-teal-400/30" },
+      { name: "REST API", color: "bg-orange-500/15 text-orange-300 border-orange-400/30" },
+      { name: "AWS EC2", color: "bg-yellow-500/15 text-yellow-300 border-yellow-400/30" },
+    ],
+    links: {
+      live: "https://shrm-temp-wf5b.vercel.app/landing",
+      github: "https://github.com/Vanshahuja1/shrm.git",
+    },
   },
   {
-    imgPath: "/images/logos/company-logo-3.png",
+    slug: "ai-medical-documentation",
+    detail: {
+      overview:
+        "A documentation tool for doctors: patient consultations are recorded in the app and summarized automatically with the OpenAI API, to streamline clinical workflows.",
+      solution: [
+        {
+          title: "Consultation recording",
+          text: "Doctors record patient conversations in the app.",
+        },
+        {
+          title: "Automatic summaries",
+          text: "Recordings are summarized with the OpenAI API.",
+        },
+      ],
+      infrastructure: ["React", "Node.js", "WebSockets", "MongoDB", "AWS S3", "OpenAI API"],
+    },
+    title: "AI Medical Documentation System",
+    shortTitle: "AI Medical Docs",
+    accent: { text: "AI Medical", color: "#3b82f6" },
+    category: "AI",
+    image: "/images/projects/ai-medical.png",
+    description:
+      "An intelligent documentation tool for doctors to record patient conversations and automatically generate summaries using OpenAI, streamlining clinical workflows.",
+    stats: ["Used by 5+ doctors", "100+ patient consultations recorded"],
+    tech: [
+      { name: "React", color: "bg-sky-500/15 text-sky-300 border-sky-400/30" },
+      { name: "OpenAI API", color: "bg-violet-500/15 text-violet-300 border-violet-400/30" },
+      { name: "Node.js", color: "bg-emerald-500/15 text-emerald-300 border-emerald-400/30" },
+      { name: "MongoDB", color: "bg-green-500/15 text-green-300 border-green-400/30" },
+      { name: "WebSockets", color: "bg-cyan-500/15 text-cyan-300 border-cyan-400/30" },
+      { name: "AWS S3", color: "bg-yellow-500/15 text-yellow-300 border-yellow-400/30" },
+    ],
+    links: {
+      live: "https://saramedico.com/",
+      github: "https://github.com/ShikharPandey123/ai-medical.git",
+    },
   },
   {
-    imgPath: "/images/logos/company-logo-4.png",
+    slug: "atomic-player",
+    detail: {
+      problem:
+        "The goal: let users of a video analytics and conversion platform query their workspace data and run workspace operations in plain language, while every state-changing action stays under their explicit approval.",
+      solution: [
+        {
+          title: "A dedicated assistant service",
+          text: "The LLM-powered workspace assistant runs as its own microservice, separate from the core product.",
+        },
+        {
+          title: "Tool registry and execution harness",
+          text: "A structured registry of 21 read-only tools for data retrieval and 7 action tools for workspace operations, executed through a controlled harness.",
+        },
+        {
+          title: "Approval gating",
+          text: "Every state-changing action is held for the user's explicit approval before it runs.",
+        },
+        {
+          title: "Dynamic model routing",
+          text: "Simple requests go to lightweight models; complex tasks go to reasoning-capable models.",
+        },
+        {
+          title: "Streaming responses",
+          text: "Answers stream back to the user while tool execution stays controlled.",
+        },
+      ],
+      scalability: [
+        {
+          title: "Isolated service",
+          text: "Running the assistant as a separate microservice keeps it independent of the core product.",
+        },
+        {
+          title: "Right-sized models",
+          text: "Routing reserves reasoning-capable models for the requests that need them.",
+        },
+      ],
+      infrastructure: ["Node.js", "TypeScript", "PostgreSQL", "Redis", "Azure"],
+      metrics: [
+        { value: "21", label: "read-only tools" },
+        { value: "7", label: "approval-gated action tools" },
+      ],
+    },
+    title: "Atomic Player — Video Analytics & Conversion SaaS",
+    shortTitle: "Atomic Player",
+    accent: { text: "Atomic Player", color: "#f97316" },
+    category: "AI",
+    image: "/images/projects/atomic-player.png",
+    description:
+      "A video analytics and conversion SaaS with an LLM-powered workspace assistant deployed as a dedicated microservice. A structured tool registry and execution harness orchestrates read-only tools for data retrieval and action tools for workspace operations, with explicit approval gating every state-changing action. Dynamic model routing sends simple requests to lightweight models and complex tasks to reasoning-capable models, with streaming responses and controlled tool execution.",
+    stats: [
+      "21 read-only tools + 7 approval-gated action tools",
+      "Dynamic model routing with streaming responses",
+    ],
+    tech: [
+      { name: "Node.js", color: "bg-emerald-500/15 text-emerald-300 border-emerald-400/30" },
+      { name: "TypeScript", color: "bg-blue-500/15 text-blue-300 border-blue-400/30" },
+      { name: "LLMs", color: "bg-violet-500/15 text-violet-300 border-violet-400/30" },
+      { name: "PostgreSQL", color: "bg-indigo-500/15 text-indigo-300 border-indigo-400/30" },
+      { name: "Redis", color: "bg-red-500/15 text-red-300 border-red-400/30" },
+      { name: "Azure", color: "bg-sky-500/15 text-sky-300 border-sky-400/30" },
+    ],
+    links: {},
   },
   {
-    imgPath: "/images/mongo.png",
+    slug: "gatherrgo",
+    detail: {
+      problem:
+        "GatherrGo is a group travel and social events app built in React Native. It needed a backend covering the full lifecycle of a trip or event (accounts, groups, bookings, payments and notifications) on infrastructure that can scale horizontally.",
+      role: "I designed and built the end-to-end backend architecture.",
+      solution: [
+        {
+          title: "REST API",
+          text: "Endpoints for authentication, trip and group lifecycles, bookings, payments and notifications power the React Native app.",
+        },
+        {
+          title: "Containerized deployment",
+          text: "The backend ships as Docker images through ECR and runs on EC2 instances behind an Application Load Balancer.",
+        },
+        {
+          title: "Managed data and delivery",
+          text: "PostgreSQL on RDS stores the data; CloudFront handles content delivery.",
+        },
+      ],
+      scalability: [
+        {
+          title: "Separated tiers",
+          text: "Compute, content delivery and data storage are separated, so the app can scale horizontally.",
+        },
+        {
+          title: "Load-balanced compute",
+          text: "Containers run behind an Application Load Balancer, so capacity grows by adding instances.",
+        },
+      ],
+      infrastructure: [
+        "Node.js",
+        "Express.js",
+        "PostgreSQL (RDS)",
+        "Docker",
+        "AWS EC2",
+        "Application Load Balancer",
+        "ECR",
+        "CloudFront",
+      ],
+    },
+    title: "GatherrGo — Group Travel & Social Events Platform",
+    shortTitle: "GatherrGo",
+    accent: { text: "GatherrGo", color: "#14b8a6" },
+    category: "Full-Stack",
+    image: "/images/projects/gatherrgo.png",
+    description:
+      "A group travel and social events platform. I designed and built the end-to-end backend architecture, with REST APIs for authentication, trip and group lifecycles, bookings, payments, and notifications that power the React Native app. It runs on a containerized AWS architecture: Dockerized EC2 instances behind an Application Load Balancer, ECR-based deployments, CloudFront, and PostgreSQL on RDS. Compute, content delivery, and data storage are separated so the app can scale horizontally.",
+    stats: [
+      "End-to-end backend for a React Native app",
+      "Horizontally scalable AWS deployment (ALB, ECR, CloudFront, RDS)",
+    ],
+    tech: [
+      { name: "Node.js", color: "bg-emerald-500/15 text-emerald-300 border-emerald-400/30" },
+      { name: "Express.js", color: "bg-purple-500/15 text-purple-300 border-purple-400/30" },
+      { name: "PostgreSQL", color: "bg-indigo-500/15 text-indigo-300 border-indigo-400/30" },
+      { name: "Docker", color: "bg-cyan-500/15 text-cyan-300 border-cyan-400/30" },
+      { name: "AWS", color: "bg-yellow-500/15 text-yellow-300 border-yellow-400/30" },
+    ],
+    links: {},
   },
   {
-    imgPath: "/images/logos/company-logo-6.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-7.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-8.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-9.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-10.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-11.png",
+    slug: "ai-shopping-assistant",
+    detail: {
+      problem:
+        "Keyword search matches what shoppers type, not what they mean. The goal was a conversational shopping assistant that understands intent across a catalog of 5,000+ product variants, narrows results by colour and size, and takes the shopper all the way to checkout without leaving the chat.",
+      role: "Built at Monkstack Solutions as part of my work as an AI Engineer.",
+      solution: [
+        {
+          title: "Catalog to language",
+          text: "Every product variant, with its attributes such as colour and size, is converted into a natural-language description the model can reason about.",
+        },
+        {
+          title: "Embeddings in pgvector",
+          text: "Those descriptions are embedded with Azure OpenAI and stored in PostgreSQL with pgvector.",
+        },
+        {
+          title: "Semantic retrieval (RAG)",
+          text: "A shopper's request is matched by meaning against the embedded catalog, so results reflect intent rather than exact keywords.",
+        },
+        {
+          title: "Tool calling over MCP",
+          text: "GPT-4.1 calls the catalog-search tools exposed through MCP instead of guessing from memory.",
+        },
+        {
+          title: "Colour and size filters",
+          text: "Semantic results are narrowed with structured colour and size filters.",
+        },
+        {
+          title: "In-chat checkout",
+          text: "The shopper completes checkout inside the conversation.",
+        },
+      ],
+      architecture: [
+        {
+          title: "Request flow",
+          text: "Shopper message → GPT-4.1 → MCP search tool → pgvector semantic search with colour/size filters → products back into the chat → checkout.",
+        },
+        {
+          title: "Retrieval-augmented answers",
+          text: "Responses are grounded in products retrieved from the catalog (RAG).",
+        },
+      ],
+      scalability: [
+        {
+          title: "Catalog scale",
+          text: "Semantic search runs across 5,000+ product variants.",
+        },
+        {
+          title: "Containerized deployment",
+          text: "The assistant runs on Azure Container Apps.",
+        },
+      ],
+      infrastructure: [
+        "GPT-4.1",
+        "Azure OpenAI embeddings",
+        "MCP",
+        "PostgreSQL + pgvector",
+        "Azure Container Apps",
+      ],
+      metrics: [{ value: "5,000+", label: "product variants searchable" }],
+    },
+    title: "AI Shopping Assistant",
+    shortTitle: "AI Shopping Assistant",
+    accent: { text: "AI Shopping", color: "#f59e0b" },
+    category: "AI",
+    image: "/images/projects/ai-shopping.gif",
+    description:
+      "A RAG-based shopping assistant that understands what shoppers mean, not just what they type. Catalog variants are turned into natural-language descriptions, embedded with Azure OpenAI into pgvector, and searched semantically by GPT-4.1 through MCP tool calls, with colour and size filters and checkout right inside the chat.",
+    stats: [
+      "Semantic search across 5,000+ product variants",
+      "GPT-4.1 tool calling via MCP with in-chat checkout",
+    ],
+    tech: [
+      { name: "GPT-4.1", color: "bg-violet-500/15 text-violet-300 border-violet-400/30" },
+      { name: "Azure OpenAI", color: "bg-sky-500/15 text-sky-300 border-sky-400/30" },
+      { name: "MCP", color: "bg-pink-500/15 text-pink-300 border-pink-400/30" },
+      { name: "pgvector", color: "bg-indigo-500/15 text-indigo-300 border-indigo-400/30" },
+      { name: "RAG", color: "bg-cyan-500/15 text-cyan-300 border-cyan-400/30" },
+      { name: "Azure Container Apps", color: "bg-blue-500/15 text-blue-300 border-blue-400/30" },
+    ],
+    links: {},
   },
 ];
 
-const abilities = [
-  {
-    imgPath: "/images/seo.png",
-    title: "Pixel-Perfect Precision",
-    desc: "Every line of code reflects care, craftsmanship, and a commitment to flawless execution.",
-  },
-  {
-    imgPath: "/images/chat.png",
-    title: "Seamless Collaboration",
-    desc: "Bridging ideas and execution through honest communication and a shared vision for success.",
-  },
-  {
-    imgPath: "/images/time.png",
-    title: "Punctual. Professional. Proven.",
-    desc: "Delivering high-quality products right when you need them — every single time.",
-  },
+// Order of the /projects index and detail-page prev/next: the three lead
+// projects first, then the AI projects, then the rest. Projects not listed
+// here are appended in the order they appear in `projectData`.
+const projectOrder = [
+  "atomic-player",
+  "gatherrgo",
+  "qruzine",
+  "ai-shopping-assistant",
+  "ai-medical-documentation",
+  "shrm",
 ];
 
-
-const techStackImgs = [
-  {
-    name: "React Developer",
-    imgPath: "/images/logos/react.png",
-  },
-  {
-    name: "Python Developer",
-    imgPath: "/images/logos/python.svg",
-  },
-  {
-    name: "Backend Developer",
-    imgPath: "/images/logos/node.png",
-  },
-  {
-    name: "Interactive Developer",
-    imgPath: "/images/logos/three.png",
-  },
-  {
-    name: "Project Manager",
-    imgPath: "/images/logos/git.svg",
-  },
+const projects = [
+  ...projectOrder
+    .map((slug) => projectData.find((project) => project.slug === slug))
+    .filter(Boolean),
+  ...projectData.filter((project) => !projectOrder.includes(project.slug)),
 ];
 
-const techStackIcons = [
-  {
-    name: "React Developer",
-    modelPath: "/models/react_logo-transformed.glb",
-    scale: 1,
-    rotation: [0, 0, 0],
-  },
-  {
-    name: "Python Developer",
-    modelPath: "/models/python-transformed.glb",
-    scale: 0.8,
-    rotation: [0, 0, 0],
-  },
-  {
-    name: "Backend Developer",
-    modelPath: "/models/node-transformed.glb",
-    scale: 5,
-    rotation: [0, -Math.PI / 2, 0],
-  },
-  {
-    name: "Interactive Developer",
-    modelPath: "/models/three.js-transformed.glb",
-    scale: 0.05,
-    rotation: [0, 0, 0],
-  },
-  {
-    name: "Project Manager",
-    modelPath: "/models/git-svg-transformed.glb",
-    scale: 0.05,
-    rotation: [0, -Math.PI / 4, 0],
-  },
-];
+// Projects shown in the home-page showcase. The first is the large slot on the
+// left, the rest follow in order.
+const homeFeaturedSlugs = ["atomic-player", "gatherrgo", "qruzine"];
 
 const expCards = [
   {
-    imgPath: "/images/logos/one_aim.png",
-    logoPath: "/images/logos/one_aim.png",
-    title: "Frontend Developer",
-    company: "One Aim IT Solutions",
-    date: "March 2025 - Present",
+    imgPath: "/images/logos/monkstack.png",
+    logoPath: "/images/logos/monkstack.png",
+    title: "AI Engineer",
+    company: "Monkstack Solutions",
+    date: "Feb 2026 - Present",
     responsibilities: [
-      "Developing and maintaining responsive and scalable web interfaces using React.js.",
-      "Collaborating with backend developers and UI/UX designers to ensure seamless user experiences.",
-      "Optimizing web performance and ensuring cross-browser compatibility.",
-      "Implementing reusable components and following modern frontend best practices.",
+      "Engineered an optimized blueprint-to-3D pipeline combining deterministic Python vector parsing (AutoCAD PDF) with targeted Claude Sonnet 4 (AWS Bedrock) inference on tiled crops, cutting LLM calls by 70%, processing time from 6 min to 90 sec, and per-drawing cost under $0.50 via wall-graph polygon tracing.",
+      "Designed a multi-tenant FastAPI backend deployed with Docker on AWS EC2, using PostgreSQL row-level security for tenant isolation, cancellable long-running jobs with stage-wise progress streamed live via Redis Streams and SSE, and per-stage artifacts stored in S3 for debugging and replay.",
+      "Built a RAG-based shopping assistant on Azure Container Apps that converts catalog variants into natural-language descriptions, embeds them with Azure OpenAI into pgvector, and uses GPT-4.1 tool calling via MCP for semantic search across 5,000+ product variants with colour/size filters and in-chat checkout.",
     ],
     review:
-      "Vansh is a dedicated and talented frontend developer who consistently delivers high-quality, efficient, and well-structured code. His proactive approach and attention to detail greatly enhance our project outcomes.",
+      "Vansh brings strong technical depth and a fast-learning mindset to every AI initiative he takes on, consistently translating complex ideas into working solutions.",
+  },
+  {
+    imgPath: "/images/logos/one_aim.png",
+    logoPath: "/images/logos/one_aim.png",
+    title: "Software Developer",
+    company: "One Aim IT Solutions (Remote)",
+    date: "Mar 2025 - Feb 2026",
+    responsibilities: [
+      "Designed the PostgreSQL schema for an employee management portal covering employee records, payroll, and leave, with indexed queries and transactional updates to maintain data consistency.",
+      "Built Node.js REST APIs with JWT authentication and role-based access control for admin, manager, and employee roles, including validation, pagination, and connection pooling.",
+    ],
+    review:
+      "Vansh is a dedicated and talented software developer who consistently delivers high-quality, efficient, and well-structured code. His proactive approach and attention to detail greatly enhance our project outcomes.",
   },
   {
     imgPath: "/images/logos/one_aim.png",
@@ -195,21 +474,6 @@ const expCards = [
 ];
 
 
-
-const expLogos = [
-  {
-    name: "logo1",
-    imgPath: "/images/logo1.png",
-  },
-  {
-    name: "logo2",
-    imgPath: "/images/logo2.png",
-  },
-  {
-    name: "logo3",
-    imgPath: "/images/logo3.png",
-  },
-];
 
 const testimonials = [
   {
@@ -271,35 +535,12 @@ const testimonials = [
   },
 ];
 
-const socialImgs = [
-  {
-    name: "insta",
-    imgPath: "/images/insta.png",
-  },
-  {
-    name: "fb",
-    imgPath: "/images/fb.png",
-  },
-  {
-    name: "x",
-    imgPath: "/images/x.png",
-  },
-  {
-    name: "linkedin",
-    imgPath: "/images/linkedin.png",
-  },
-];
-
 export {
   words,
-  abilities,
-  logoIconsList,
+  projects,
+  homeFeaturedSlugs,
   counterItems,
   expCards,
-  expLogos,
   testimonials,
-  socialImgs,
-  techStackIcons,
-  techStackImgs,
   navLinks,
 };

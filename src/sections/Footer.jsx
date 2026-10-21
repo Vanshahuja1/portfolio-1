@@ -4,9 +4,8 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <div className="flex flex-col justify-center">
-          <p>Terms & Conditions</p>
-        </div>
+        {/* empty first column keeps the socials centred in the 3-column grid */}
+        <div className="hidden md:block" aria-hidden="true" />
         <div className="socials">
           <a
             href="https://www.instagram.com/vansh_ahuja1/"

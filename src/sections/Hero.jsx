@@ -1,10 +1,11 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import AnimatedCounter from "../components/AnimatedCounter";
 import Button from "../components/Button";
 import LightRays from "../components/LightRays";
 import { words } from "../constants";
+import { prefersReducedMotion } from "../lib/motion";
 
 const Hero = () => {
   const [animationComplete, setAnimationComplete] = useState(false);
@@ -15,12 +16,12 @@ const Hero = () => {
         setAnimationComplete(true);
         window.dispatchEvent(new CustomEvent("heroAnimationComplete"));
         // Remove will-change after animation
-        gsap.set(".hero-text h1", { clearProps: "all" });
+        gsap.set(".hero-text .hero-line", { clearProps: "all" });
       },
     });
 
     tl.fromTo(
-      ".hero-text h1",
+      ".hero-text .hero-line",
       { 
         y: 20, 
         opacity: 0,
@@ -38,7 +39,7 @@ const Hero = () => {
   return (
     <section id="hero" className="relative overflow-hidden">
       {/* Light rays background layer - Loads after text animation */}
-      {animationComplete && (
+      {animationComplete && !prefersReducedMotion() && (
         <div className="absolute inset-0 z-5 pointer-events-none animate-fade-in">
           <LightRays
             raysOrigin="top"
@@ -61,10 +62,11 @@ const Hero = () => {
         {/* CENTER: Hero Content */}
         <header className="flex flex-col justify-center items-center text-center w-full md:px-24 px-5">
           <div className="flex flex-col gap-6">
-            <div className="hero-text">
-              <h1 className="ml-5 lg:text-left md:text-center text-center will-change-transform-opacity">
+            <h1 className="hero-text">
+              <span className="hero-line ml-5 lg:text-left md:text-center text-center will-change-transform-opacity">
                 Transforming
-                <span className="slide">
+                {/* decorative rotating words — hidden from assistive tech */}
+                <span className="slide" aria-hidden="true">
                   <span className="wrapper">
                     {words.map((word, index) => (
                       <span
@@ -73,7 +75,7 @@ const Hero = () => {
                       >
                         <img
                           src={word.imgPath}
-                          alt="person"
+                          alt=""
                           className="xl:size-9 md:size-8 size-7 md:p-2 p-1 rounded-full bg-white-50"
                           loading="eager"
                         />
@@ -82,19 +84,19 @@ const Hero = () => {
                     ))}
                   </span>
                 </span>
-              </h1>
-              <h1 className="will-change-transform-opacity">into Real Projects</h1>
-              <h1 className="will-change-transform-opacity">that Deliver Experiences</h1>
-            </div>
+              </span>
+              <span className="hero-line will-change-transform-opacity">into Real Projects</span>
+              <span className="hero-line will-change-transform-opacity">that Deliver Experiences</span>
+            </h1>
 
             <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              I&apos;m Vansh, a full-stack developer turning creative visions into scalable products.
+              I&apos;m Vansh, an AI Engineer &amp; full-stack developer turning ideas into intelligent, scalable products.
             </p>
 
             <Button
               text="See My Work"
               className="md:w-80 md:h-16 w-60 h-12 mx-auto"
-              id="counter"
+              href="#work"
             />
           </div>
         </header>

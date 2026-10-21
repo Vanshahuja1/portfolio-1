@@ -1,13 +1,14 @@
-const TitleHeader = ({ title, sub }) => {
+const TitleHeader = ({ title, sub, as = "h2" }) => {
+  const Heading = as;
   return (
     <div className="flex flex-col items-center gap-5">
       <div className="hero-badge">
         <p>{sub}</p>
       </div>
       <div>
-        <h1 className="font-semibold md:text-5xl text-3xl text-center">
+        <Heading className="font-semibold md:text-5xl text-3xl text-center">
           {title}
-        </h1>
+        </Heading>
       </div>
     </div>
   );

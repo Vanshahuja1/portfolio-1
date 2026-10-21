@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ArrowUpRight } from "lucide-react";
 import FuzzyText from "../components/FuzzyText";
 
 const Zyntrix = () => {
@@ -21,9 +22,10 @@ const Zyntrix = () => {
   return (
     <section id="zyntrix" className="section-padding flex justify-center px-4 sm:px-6">
       <div className="w-full max-w-6xl flex flex-col items-center text-center gap-4 sm:gap-5 md:gap-6">
+        <h2 className="sr-only">Zyntrix</h2>
         <div className="flex flex-col items-center gap-2 sm:gap-3">
           <span className="hero-badge">Building </span>
-          <div className="pointer-events-auto">
+          <div className="pointer-events-auto flex items-center gap-2">
             <FuzzyText
               baseIntensity={0.2}
               hoverIntensity={0.5}
@@ -34,6 +36,15 @@ const Zyntrix = () => {
             >
               Zyntrix
             </FuzzyText>
+            <a
+              href="https://zyntrix.in"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visit zyntrix.in"
+              className="text-white-50 hover:text-white transition-colors"
+            >
+              <ArrowUpRight size={28} strokeWidth={1.75} />
+            </a>
           </div>
         </div>
 

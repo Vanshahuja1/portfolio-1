@@ -26,12 +26,12 @@ const Experience = () => {
         duration: 1,
         // Use a power2 ease-in-out curve
         ease: "power2.inOut",
-        // Trigger the animation when the card is 80% of the way down the screen
+        // Trigger the animation as soon as the card starts entering the screen
         scrollTrigger: {
           // The card is the trigger element
           trigger: card,
-          // Trigger the animation when the card is 80% down the screen
-          start: "top 80%",
+          // Trigger the animation as soon as the card enters the bottom of the screen
+          start: "top 95%",
         },
       });
     });
@@ -78,12 +78,12 @@ const Experience = () => {
         duration: 1,
         // Use a power2 ease-in-out curve
         ease: "power2.inOut",
-        // Trigger the animation when the text is 60% down the screen
+        // Trigger the animation as soon as the text starts entering the screen
         scrollTrigger: {
           // The text is the trigger element
           trigger: text,
-          // Trigger the animation when the text is 60% down the screen
-          start: "top 60%",
+          // Trigger the animation as soon as the text enters the bottom of the screen
+          start: "top 90%",
         },
       });
     }, "<"); // position parameter - insert at the start of the animation
@@ -97,7 +97,7 @@ const Experience = () => {
       <div className="w-full h-full md:px-20 px-5">
         <TitleHeader
           title="Professional Work Experience"
-          sub="💼 My Career Overview"
+          sub="My Career Overview"
         />
         <div className="mt-32 relative">
           <div className="relative z-50 xl:space-y-32 space-y-10">
@@ -117,14 +117,19 @@ const Experience = () => {
                       <div className="gradient-line w-1 h-full" />
                     </div>
                     <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
-                      <div className="timeline-logo bg-[#FAF9F6]">
-                        <img src={card.logoPath} alt="logo" />
+                      <div className="timeline-logo bg-[#FAF9F6] overflow-hidden">
+                        <img
+                          src={card.logoPath}
+                          alt=""
+                          className="w-full h-full object-cover rounded-full"
+                        />
                       </div>
                       <div>
-                        <h1 className="font-semibold text-3xl">{card.title}</h1>
-                        <p className="my-5 text-white-50">
-                          🗓️&nbsp;{card.date}
+                        <h3 className="font-semibold text-3xl">{card.title}</h3>
+                        <p className="mt-2 text-lg text-white-50">
+                          {card.company}
                         </p>
+                        <p className="my-5 text-white-50">{card.date}</p>
                         <p className="text-[#839CB5] italic">
                           Responsibilities
                         </p>

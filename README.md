@@ -1,142 +1,71 @@
-<div align="center">
-  <br />
-    <a href="https://www.youtube.com/watch?v=E-fdPfRxkzQ" target="_blank">
-      <img src="public/images/readme.png" alt="Project Banner">
-    </a>
-  <br />
+# Vansh Ahuja — Portfolio
 
-  <div>
-    <img src="https://img.shields.io/badge/-Three.js-black?style=for-the-badge&logo=three.js&logoColor=white" />
-    <img src="https://img.shields.io/badge/-GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white" />
-    <img src="https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-  </div>
+Personal portfolio built with React 19, Vite, Tailwind CSS v4, React Router 7 and GSAP.
 
-  <h3 align="center">Interactive 3D Portfolio Website</h3>
-
-   <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
-    </div>
-</div>
-
-## 📋 <a name="table">Table of Contents</a>
-
-1. 🤖 [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Features](#features)
-4. 🤸 [Quick Start](#quick-start)
-5. 🔗 [Assets & Snippets](#links)
-6. 🚀 [More](#more)
-
-## ⚠️ Tutorial
-
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>.
-
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
-
-<a href="https://www.youtube.com/watch?v=E-fdPfRxkzQ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
-
-## <a name="introduction">🤖 Introduction</a>
-
-The 3D Portfolio project is a highly engaging personal website that features animated 3D scenes, smooth camera transitions, interactive model showcases, and responsive design. It’s ideal for developers, designers, or freelancers looking to stand out in the digital crowd.
-
-If you're getting started and need assistance or face any bugs, join our active Discord community with over **50k+** members. It's a place where people help each other out.
-
-<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
-
-## <a name="tech-stack">⚙️ Tech Stack</a>
-
-- Three.js
-- React Three Fiber
-- Drei
-- GSAP
-- Tailwind CSS
-- Vite
-- React 19
-
-## <a name="features">🔋 Features</a>
-
-### Features of the 3D Portfolio Project
-
-👉 Animated 3D models and reveal animations
-
-👉 Realistic lighting and shadows
-
-👉 GSAP-powered scroll interactions
-
-👉 Responsive design with Tailwind CSS and Flexbox/Grid
-
-👉 Micro Interactions
-
-👉 Multi-section layout (About, Projects, Contact)
-
-👉 Mobile optimized 3D experience
-
-and many more, including code architecture and reusability.
-
-## <a name="quick-start">🤸 Quick Start</a>
-
-Follow these steps to set up the project locally on your machine.
-
-**Prerequisites**
-
-Make sure you have the following installed on your machine:
-
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
-
-**Cloning the Repository**
-
-```bash
-git clone https://github.com/adrianhajdin/3d-portfolio.git
-cd 3d-portfolio
-```
-
-**Installation**
-
-Install the project dependencies using npm:
+## Getting started
 
 ```bash
 npm install
+npm run dev       # local dev server
+npm run lint      # ESLint
+npm run build     # production build into dist/
+npm run preview   # serve the production build locally
 ```
 
-**Set Up Environment Variables**
+### Contact form
 
-Create a new file named `.env` in the root of your project and add the following content:
+The form posts JSON to `/api/contact`, a Vercel serverless function ([`api/contact.js`](api/contact.js)) that sends the message with Nodemailer over Gmail SMTP. No third-party form service is involved. The logic lives in [`api/_lib/contact.js`](api/_lib/contact.js); validation rules are shared with the form via [`src/lib/contactValidation.js`](src/lib/contactValidation.js).
 
-```env
-VITE_APP_EMAILJS_SERVICE_ID=
-VITE_APP_EMAILJS_TEMPLATE_ID=
-VITE_APP_EMAILJS_PUBLIC_KEY=
+It needs three **server-side** environment variables (never prefix them with `VITE_`, which would expose them to the browser):
+
+| Variable | Purpose |
+|---|---|
+| `GMAIL_USER` | The Gmail address that sends the mail |
+| `GMAIL_APP_PASSWORD` | A Gmail App Password for that account (not your normal password) |
+| `CONTACT_TO` | Where messages are delivered (`vanshahuja318@gmail.com`) |
+
+**Create a Gmail App Password:** turn on 2-Step Verification for the Google account (Google Account → Security), then open <https://myaccount.google.com/apppasswords>, create one named e.g. "Portfolio contact" and copy the 16-character password (spaces don't matter). Revoke it there at any time.
+
+**Local development:** copy `.env.example` to `.env` (git-ignored), fill in the values and run `npm run dev`. A small Vite dev middleware ([`vite.config.js`](vite.config.js)) serves `/api/contact` with the same handler, so the Vercel CLI isn't needed. (`vercel dev` also works if you have it.)
+
+**Production (Vercel):** add the three variables under Project → Settings → Environment Variables, then redeploy. [`vercel.json`](vercel.json) rewrites every non-`/api` path to `index.html` for client-side routing.
+
+**Abuse protection** (no third parties): a hidden honeypot field (silently accepted, never sent), a minimum 3-second fill time, and a per-IP limit of 5 requests per 15 minutes. The rate limit is in memory, so it resets on cold starts and isn't shared between concurrent function instances. It slows casual abuse; it isn't a hard guarantee.
+
+Without the variables the form shows a generic error; the rest of the site works.
+
+## Routes
+
+| Path | Page |
+|---|---|
+| `/` | Home (hero, selected projects, experience, skills, testimonials, contact) |
+| `/projects` | All projects |
+| `/projects/:slug` | Project detail page |
+| `*` | Not found |
+
+The app is a client-side SPA, so the host must serve `index.html` for unknown paths (a rewrite to `/index.html`), otherwise deep links such as `/projects/gatherrgo` will 404 on refresh.
+
+## Content
+
+All site content lives in [`src/constants/index.js`](src/constants/index.js).
+
+**Projects** are a single list that feeds the home-page showcase (`featured: true`), the `/projects` index and the `/projects/:slug` detail pages. Slugs are used in URLs, so don't rename them. Each project can optionally carry a `detail` object with `overview`, `problem`, `role`, `architecture`, `decisions`, `challenges`, `outcomes` and `media`; the detail page only renders the sections that are present. The schema is documented above the `projects` array.
+
+## Project structure
+
+```
+src/
+  pages/        Home, ProjectsPage, ProjectDetailPage, NotFound
+  sections/     Home-page sections (Hero, ShowcaseSection, Experience, …)
+  components/   Shared UI (NavBar, Button, TitleHeader, ProjectCard, …)
+  hooks/        usePageTitle
+  lib/          Small helpers (reduced-motion check)
+  constants/    Site content
+public/         Static assets (images under public/images)
 ```
 
-Replace the placeholder values with your actual **[EmailJS](https://www.emailjs.com/)** credentials.
+## Accessibility notes
 
-**Running the Project**
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173/) in your browser to view the project.
-
-
-## <a name="links">🔗 Assets and Snippets</a>
-
-Assets and snippets used in the project can be found in the **[video kit](https://jsm.dev/pfolio25-kit)**.
-
-<a href="https://jsm.dev/pfolio25-kit" target="_blank">
-  <img src="public/images/readme-video-kit.png" alt="Video Kit Banner">
-</a>
-
-
-## <a name="more">🚀 More</a>
-
-**Advance your skills with JSM Pro Courses**
-
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with
-detailed explanations, cool features, and exercises to boost your skills. Give it a go!
-
-<a href="https://beta.jsmastery.pro/" target="_blank">
-  <img src="public/images/readme-bottom.png" alt="Project Banner">
-</a>
+- Skip-to-content link, a single `<main>` landmark and one `h1` per page.
+- Mobile navigation menu below the `lg` breakpoint (keyboard operable; `Esc` closes it).
+- `prefers-reduced-motion` is respected for CSS and GSAP animation.
