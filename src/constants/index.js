@@ -464,9 +464,10 @@ const expCards = [
     company: "Graphic Era Hill University, Dehradun",
     date: "2021 - 2025",
     responsibilities: [
+      "Head of Tech Club – Utopia: led 15+ members in hackathons and workshops for 200+ students.",
+      "Shortlisted in the top 5 of PepsiCo's “Fuel the Future” program for a malnutrition awareness solution.",
+      "Solved 500+ Data Structures and Algorithms problems across LeetCode and other coding platforms.",
       "Completed core courses in Computer Science, including Data Structures, Algorithms, Machine Learning, and Web Development.",
-      "Worked on multiple academic and personal projects showcasing practical implementation of learned skills.",
-      "Actively participated in technical events and hackathons to enhance development and problem-solving skills.",
     ],
     review:
       "Vansh has demonstrated excellent academic performance and practical technical skills throughout his studies. His consistent effort, teamwork, and innovative thinking have been commendable.",

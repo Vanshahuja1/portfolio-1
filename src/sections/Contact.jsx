@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Linkedin, Github, Instagram, Zap, Handshake, Lightbulb } from "lucide-react";
+import { Mail, Phone, Linkedin, Github, Instagram, Zap, Handshake, Lightbulb } from "lucide-react";
 
 import TitleHeader from "../components/TitleHeader";
 import { LIMITS, validateContact } from "../lib/contactValidation";
@@ -56,6 +56,12 @@ const Contact = () => {
       title: "Email",
       value: "vanshahuja318@gmail.com",
       link: "mailto:vanshahuja318@gmail.com"
+    },
+    {
+      icon: Phone,
+      title: "Phone",
+      value: "+91 82731 94768",
+      link: "tel:+918273194768"
     },
     {
       icon: Linkedin,
@@ -192,13 +198,15 @@ const Contact = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {contactInfo.map((info, index) => {
                 const IconComponent = info.icon;
+                const isWeb = info.link.startsWith("http");
+                // an odd card out at the end spans both columns
+                const spanLast = index === contactInfo.length - 1 && contactInfo.length % 2 === 1;
                 return (
                   <a
                     key={index}
                     href={info.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="card-border rounded-xl p-6 hover:border-white-50/60 transition-all duration-300 hover:scale-105 flex flex-col items-center text-center gap-3 group"
+                    {...(isWeb && { target: "_blank", rel: "noopener noreferrer" })}
+                    className={`${spanLast ? "sm:col-span-2 " : ""}card-border rounded-xl p-6 hover:border-white-50/60 transition-all duration-300 hover:scale-105 flex flex-col items-center text-center gap-3 group`}
                   >
                     <div className="w-12 h-12 rounded-full bg-white-50/10 flex items-center justify-center group-hover:bg-white-50/20 transition-colors">
                       <IconComponent className="w-6 h-6 text-white-50 group-hover:scale-110 transition-transform" />

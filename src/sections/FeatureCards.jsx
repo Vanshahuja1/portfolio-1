@@ -1,4 +1,4 @@
-import { Code2, BrainCircuit, Cloud, Handshake } from "lucide-react";
+import { Code2, BrainCircuit, Cloud, Workflow } from "lucide-react";
 
 const abilities = [
   {
@@ -17,9 +17,9 @@ const abilities = [
     desc: "Deploying and scaling applications on AWS with CI/CD pipelines built for reliability.",
   },
   {
-    Icon: Handshake,
-    title: "Seamless Collaboration",
-    desc: "Bridging ideas and execution through honest communication and a shared vision for success.",
+    Icon: Workflow,
+    title: "Engineering Practices",
+    desc: "Spec-Driven Development (SDD), BMAD Method, Claude Code, Custom AI Skills, Agentic Coding Workflows and Context Engineering.",
   },
 ];
 
